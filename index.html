@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="InfoSparks Learning - Online Web Tutorials is launching very soon. Get notified!">
+    <title>InfoSparks Learning | Launching Very Soon</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/HomePageImages/Favicon.jpg">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ============================================================
+           GLOBAL RESET & VARIABLES
+           ============================================================ */
+        :root {
+            --brand-green: #34A853;
+            --brand-green-dark: #2b8c46;
+            --brand-green-light: #e8f5e9;
+            --brand-green-glow: rgba(52, 168, 83, 0.4);
+            --text-dark: #1a1a1a;
+            --text-regular: #4a4a4a;
+            --text-light: #6c757d;
+            --bg-dark: #0f1419;
+            --bg-dark-2: #1a2028;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark-2) 50%, #0d2a1a 100%);
+            min-height: 100vh;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* ============================================================
+           ANIMATED BACKGROUND
+           ============================================================ */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--brand-green);
+            top: -200px;
+            right: -100px;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #1db954;
+            bottom: -150px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: #4caf50;
+            top: 40%;
+            left: 30%;
+            animation: float 18s ease-in-out infinite;
+            opacity: 0.15;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -40px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.95); }
+        }
+
+        /* Grid Pattern Overlay */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ============================================================
+           MAIN CONTAINER
+           ============================================================ */
+        .launch-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            padding: clamp(20px, 4vw, 40px);
+        }
+
+        /* ============================================================
+           LOGO
+           ============================================================ */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        /* Logo Image Styling */
+        .logo-img {
+                max-height: 200px;
+				width: auto;
+            background: #ffffff;
+            padding: 12px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* ============================================================
+           BADGE
+           ============================================================ */
+        .launch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(52, 168, 83, 0.15);
+            border: 1px solid rgba(52, 168, 83, 0.4);
+            color: var(--brand-green);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            animation: fadeInDown 0.8s ease 0.1s backwards;
+            backdrop-filter: blur(10px);
+        }
+
+        .launch-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* ============================================================
+           HEADLINE
+           ============================================================ */
+        .launch-title {
+            font-size: clamp(2.2rem, 7vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .launch-title .gradient-text {
+            background: linear-gradient(135deg, var(--brand-green) 0%, #7CFC00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .launch-subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            color: rgba(255,255,255,0.65);
+            font-weight: 400;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+        }
+
+        /* ============================================================
+           COUNTDOWN TIMER
+           ============================================================ */
+        .countdown-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 20px);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .countdown-box {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: clamp(16px, 2.5vw, 24px) clamp(14px, 2.5vw, 28px);
+            min-width: clamp(75px, 15vw, 110px);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .countdown-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(52, 168, 83, 0.5);
+        }
+
+        .countdown-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-green), #7CFC00);
+        }
+
+        .countdown-number {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-label {
+            font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           PROGRESS BAR
+           ============================================================ */
+        .progress-wrapper {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.8s ease 0.5s backwards;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .progress-track {
+            height: 8px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--brand-green), #7CFC00);
+            border-radius: 50px;
+            transition: width 2s ease;
+            position: relative;
+            box-shadow: 0 0 15px var(--brand-green-glow);
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* ============================================================
+           EMAIL NOTIFY FORM
+           ============================================================ */
+        .notify-form-wrapper {
+            max-width: 550px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .notify-form {
+            display: flex;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 60px;
+            padding: 6px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .notify-form:focus-within {
+            border-color: var(--brand-green);
+            box-shadow: 0 0 30px var(--brand-green-glow);
+        }
+
+        .notify-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 14px 24px;
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            min-width: 0;
+        }
+
+        .notify-form input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .notify-btn {
+            background: linear-gradient(135deg, var(--brand-green), var(--brand-green-dark));
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 32px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px var(--brand-green-glow);
+        }
+
+        .notify-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 25px rgba(52, 168, 83, 0.6);
+        }
+
+        .notify-btn:active {
+            transform: scale(0.98);
+        }
+
+        .form-message {
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: var(--brand-green);
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .form-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           FEATURE HIGHLIGHTS
+           ============================================================ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            max-width: 750px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.8s ease 0.7s backwards;
+        }
+
+        .feature-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(52, 168, 83, 0.08);
+            border-color: rgba(52, 168, 83, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 1.6rem;
+            color: var(--brand-green);
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* ============================================================
+           SOCIAL LINKS
+           ============================================================ */
+        .social-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            animation: fadeInUp 0.8s ease 0.8s backwards;
+        }
+
+        .social-link {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--brand-green);
+            border-color: var(--brand-green);
+            color: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px var(--brand-green-glow);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer-text {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+            animation: fadeInUp 0.8s ease 0.9s backwards;
+        }
+
+        .footer-text a {
+            color: var(--brand-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           ANIMATIONS
+           ============================================================ */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================================
+           RESPONSIVE DESIGN
+           ============================================================ */
+        @media (max-width: 768px) {
+            .countdown-box {
+                min-width: 70px;
+                padding: 14px 12px;
+            }
+
+            .notify-form {
+                flex-direction: column;
+                border-radius: 20px;
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .notify-form input {
+                text-align: center;
+                padding: 12px 16px;
+            }
+
+            .notify-btn {
+                width: 100%;
+                justify-content: center;
+                border-radius: 12px;
+                padding: 14px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo-img {
+                max-height: 60px;
+                padding: 8px 14px;
+				    max-height: 200px;
+  
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-wrapper {
+                gap: 8px;
+            }
+
+            .countdown-box {
+                min-width: 65px;
+                padding: 12px 10px;
+                border-radius: 12px;
+            }
+
+            .social-wrapper {
+                gap: 10px;
+            }
+
+            .social-link {
+                width: 42px;
+                height: 42px;
+            }
+
+            .launch-container {
+                padding: 16px;
+            }
+            
+            .logo-img {
+                max-height: 50px;
+				    max-height: 200px;
+   
+                padding: 6px 12px;
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         ANIMATED BACKGROUND
+         ============================================================ -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- ============================================================
+         MAIN CONTAINER
+         ============================================================ -->
+    <main class="launch-container">
+
+        <!-- Logo Section -->
+        <div class="logo-wrapper">
+            <!-- IMPORTANT: Replace 'logo.png' with the path to your attached logo image -->
+            <img src="logo.png" alt="InfoSparks Learning Logo" class="logo-img">
+        </div>
+
+        <!-- Badge -->
+        <div class="launch-badge">
+            <span class="dot"></span>
+            Launching Very Soon
+        </div>
+
+        <!-- Headline -->
+        <h1 class="launch-title">
+            Something <span class="gradient-text">Amazing</span><br>
+            Is Coming Your Way
+        </h1>
+
+        <p class="launch-subtitle">
+            We're working hard to bring you the best interactive tutorials for HTML5, CSS3, JavaScript, and more — complete with an AI Tutor to solve all your doubts.
+        </p>
+
+        <!-- Countdown Timer (7 Days) -->
+        <div class="countdown-wrapper" id="countdown">
+            <div class="countdown-box">
+                <div class="countdown-number" id="days">07</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-wrapper">
+            <div class="progress-header">
+                <span>Development Progress</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Email Notify Form -->
+        <div class="notify-form-wrapper">
+            <form class="notify-form" id="notifyForm" onsubmit="handleNotify(event)">
+                <input type="email" id="emailInput" placeholder="Enter your email address" required>
+                <button type="submit" class="notify-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Notify Me
+                </button>
+            </form>
+            <div class="form-message" id="formMessage">
+                <i class="fas fa-check-circle"></i> Thank you! We'll notify you when we launch.
+            </div>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-code"></i></div>
+                <div class="feature-title">Interactive Tutorials</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                <div class="feature-title">AI Tutor Support</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="feature-title">Exam Ready</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="feature-title">Fully Responsive</div>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-wrapper">
+            <a href="#" class="social-link" title="Facebook" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" title="Twitter" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" title="Instagram" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" title="YouTube" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link" title="LinkedIn" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <p class="footer-text">
+            © 2025 <a href="index.html">InfoSparks Learning</a>. All rights reserved.
+        </p>
+
+    </main>
+
+    <script>
+        // ============================================================
+        // 1. COUNTDOWN TIMER (7 Days from now)
+        // ============================================================
+        // Set launch date to exactly 7 days from now
+        const launchDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Update every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // ============================================================
+        // 2. PROGRESS BAR ANIMATION
+        // ============================================================
+        window.addEventListener('load', function() {
+            // Animate progress bar to 85%
+            setTimeout(function() {
+                const targetProgress = 85;
+                document.getElementById('progressFill').style.width = targetProgress + '%';
+                
+                // Animate percentage number
+                let current = 0;
+                const interval = setInterval(function() {
+                    current++;
+                    document.getElementById('progressPercent').textContent = current + '%';
+                    if (current >= targetProgress) {
+                        clearInterval(interval);
+                    }
+                }, 20);
+            }, 500);
+        });
+
+        // ============================================================
+        // 3. EMAIL NOTIFY FORM
+        // ============================================================
+        function handleNotify(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = event.target.querySelector('.notify-btn');
+            
+            if (!email) return;
+
+            // Simulate submission
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            setTimeout(function() {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                submitBtn.style.background = 'linear-gradient(135deg, #2b8c46, #1e6b34)';
+                formMessage.classList.add('show');
+                document.getElementById('emailInput').value = '';
+
+                // Reset button after 3 seconds
+                setTimeout(function() {
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                    formMessage.classList.remove('show');
+                }, 3500);
+            }, 1200);
+        }
+
+        // ============================================================
+        // 4. ENTRANCE ANIMATION FOR COUNTDOWN BOXES
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const boxes = document.querySelectorAll('.countdown-box');
+            boxes.forEach(function(box, index) {
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(20px)';
+                setTimeout(function() {
+                    box.style.transition = 'all 0.5s ease';
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
+                }, 400 + (index * 100));
+            });
+        });
+
+        // ============================================================
+        // 5. KEYBOARD SHORTCUT (Press 'E' to focus email)
+        // ============================================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'e' || e.key === 'E') {
+                if (document.activeElement.tagName !== 'INPUT') {
+                    document.getElementById('emailInput').focus();
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
